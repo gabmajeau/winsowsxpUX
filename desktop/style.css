@@ -1,0 +1,486 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.loading-gif {
+  height: 100vh;
+  width: auto;
+  object-fit: contain;
+}
+
+.welcome-img {
+  height: 100vh;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Tahoma, sans-serif;
+}
+
+
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  
+}
+
+.tray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 8%;
+ 
+  border-left: 1px solid rgb(15, 54, 71);
+  color: white;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+  background: linear-gradient(to top, #1290e9,#1290e9,#1290e9, #18b6f2);
+}
+
+.tray-icon {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#clock{
+  font-size: 110%;
+  background: transparent;
+}
+
+
+#start-button {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  background: transparent;
+  display: block;
+}
+
+#start-button img {
+  height: 100%;
+  background: transparent;
+  display: block;
+}
+
+.notification {
+  position: fixed;
+  bottom: 4%;
+  right: 6%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  background: transparent;
+
+}
+
+.notification.show {
+  opacity: 0.7;
+
+}
+
+.notify-icon {
+  width: 105%;
+  height: 105%;
+  background: none;
+}
+
+
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("assets/wallpaper.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.icon {
+  width: 4%;
+  text-align: center;
+  color: white;
+  font-family: Tahoma, sans-serif;
+  cursor: pointer;
+  background: transparent;
+  margin-right: 1%;
+}
+
+.icon img {
+  width: 90%;
+  height: auto;
+  background: transparent;
+  
+}
+
+.icon h3 {
+background: transparent;
+font-size: 75%;
+font-weight:lighter;
+font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
+color: #ffffff;
+text-shadow: 1px 2px 2px #000000;
+}
+
+.icon-ex {
+  width: 4%;
+  text-align: center;
+  color: white;
+  font-family: Tahoma, sans-serif;
+  cursor: pointer;
+  background: transparent;
+  margin-right: 1%;
+}
+
+.icon-ex img {
+  width: 90%;
+  height: auto;
+  background: transparent;
+  
+}
+
+.icon-ex h3 {
+background: transparent;
+font-size: 75%;
+font-weight:lighter;
+font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
+color: #ffffff;
+text-shadow: 1px 2px 2px #000000;
+}
+
+.window {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  background: #ece9d8;
+  border-bottom: 4px solid #055ad1;
+  border-left: 4px solid #055ad1;
+  border-right: 4px solid #055ad1;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  border-radius: 9px 9px 0 0;
+  z-index: 999;
+  span{
+    background: transparent;
+  }
+}
+
+.window-header {
+  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  color: white;
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+
+.window-header .close-btn {
+background: transparent;
+border: none;
+}
+
+.window-body {
+  padding: 0;
+  background: #000;
+  
+}
+
+.window video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.window-icon {
+  width: 16px;
+  height: 16px;
+  background: transparent;
+}
+
+.window-title-area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+}
+
+
+.icon.selected {
+  background-color: rgba(51, 153, 255, 0.4);
+  border: 1px solid #0066cc;
+  border-radius: 4px;
+}
+
+.selection-box {
+  position: absolute;
+  border: 1px solid #3399ff;
+  background-color: rgba(51, 153, 255, 0.3);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.start-menu {
+  position: fixed;
+  bottom: 30px;
+  width: 25%;
+  height: 550px;
+  background: linear-gradient(to bottom, #f0f0f0, #d4d0c8);
+  border-top: 2px solid #a6c0e7;
+  border-right: 4px solid #1b5ebd;
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.4);
+  border-radius: 0 10px 0 0;
+  z-index: -1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.start-menu-header {
+  background: linear-gradient(to bottom, #1b5ebd, #1b5ebd, #316dc0, #4693ff);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 2%;
+  gap: 5%;
+  span{
+  background: transparent;
+  font-weight: bold;
+}
+}
+
+.user-icon {
+  width: 18%;
+  background: transparent;
+  border-radius: 4px;
+  border: 1px white solid;
+  cursor: pointer;
+  
+}
+
+.start-menu-body {
+  display: flex;
+  background: #e3e3e3;
+  height: 425px;
+  border-top: 1px solid #808080;
+  
+}
+
+.start-left {
+  flex: 2;
+  background: white;
+  padding: 6px;
+  border-right: 1px solid #73869e;
+  width: 100%;
+}
+
+.start-right {
+  flex: 1;
+  background: #d3e5fd;
+  width: 100%;
+  
+}
+
+.start-left ul,
+.start-right ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 80%;
+  color: #051422;
+  background: white;
+  img{
+    width: 20%;
+  }
+}
+
+
+
+.start-left li,
+.start-right li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 2px;
+  background: white;
+  img{
+     background: transparent;
+  }
+}
+.start-right li { background: #d3e5fd;}
+
+
+.start-left li:hover,
+.start-right li:hover {
+  background: #316ac5;
+  color: white;
+}
+
+
+.start-menu-footer {
+  background: linear-gradient(to top, #0f65d2, #0f65d2, #4693ff);
+  height: 50px;
+  bottom: 30px;
+  text-align: right;
+  box-shadow: 5px 0px 6px -2px #000000;
+  position: fixed;
+  align-items: center;
+  width: 356px;
+   
+}
+
+
+
+.userpic-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 999; 
+  
+}
+
+.userpic-window {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ececec;
+  padding: 20px;
+  border-top-right-radius: 2%;
+  border-top-left-radius: 2%;
+  display: none;
+  z-index: 1000;
+  width: 700px;
+  height: 400px;
+  text-align: center;
+  border-left: 4px solid #0f65d2;
+  border-right: 4px solid #0f65d2;
+  border-bottom: 4px solid #0f65d2;
+  h3{
+    background: linear-gradient(to top, #0f65d2, #0f65d2, #4693ff);
+    font-size: 90%;
+    font-weight:100;
+    color: white;
+    padding: 2% 1% 2% 1%;
+    text-align: left;
+    
+  }
+}
+
+.pic-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 8%;
+  margin-bottom: -5%;
+  text-align: center;
+  background: transparent;
+}
+
+.pic-choice {
+  width: 70px;
+  height: 70px;
+  border-radius: 10%;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.pic-choice:hover {
+  border-color: black;
+}
+
+
+.userpic-titlebar {
+  height: 38px;
+  width: 695px;
+  display: flex;
+  text-align: left;
+  margin-left: -20px;
+  margin-top: -20px;
+  border-radius: 8px 10px 0 0;
+  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #0d4fa3;
+}
+
+
+.userpic-title-icon {
+  width: 20px;
+  margin-right: 8px;
+  background: transparent;
+
+}
+
+/* Título */
+.userpic-title-text {
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  flex: 1; 
+  background: transparent;
+  text-align: left;
+}
+
+
+.userpic-close-btn {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+.userpic-subtitle {
+  color: black;
+  text-align: left;
+  font-size: 14px;
+  background: transparent;
+  font-weight: 100;
+
+  padding: 2%;
+}
+
