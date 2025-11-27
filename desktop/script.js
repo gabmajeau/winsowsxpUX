@@ -306,5 +306,28 @@ document.querySelectorAll(".pic-choice").forEach(img => {
   });
 });
 
+const bonziIcon = document.getElementById("bonziBuddy");
+const bonziGif = document.getElementById("bonziGifContainer");
+
+let bonziActivated = false;
+
+bonziIcon.addEventListener("click", (e) => {
+  e.stopPropagation(); 
+  if (bonziActivated) return;
+
+  bonziActivated = true;
+  bonziGif.style.display = "block";
+});
+
+document.getElementById("bonzi-icon").addEventListener("click", () => {
+  if (document.querySelector(".bonzi-window")) return;
+
+  const bonzi = document.createElement("img");
+  bonzi.src = "bonzi.gif"; 
+  bonzi.className = "bonzi-window";
+  document.body.appendChild(bonzi);
+});
+
+
 
 
