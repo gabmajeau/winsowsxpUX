@@ -1,0 +1,119 @@
+body {
+  font-family: "Tahoma", sans-serif;
+  height: 100vh;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #018281;
+}
+
+.window {
+  border-top: 2px solid #b7adae;
+  border-left: 2px solid #b7adae;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  position: absolute; 
+  cursor: default;
+}
+
+.title-bar {
+  background: linear-gradient(to right, #1959de, #001596);
+  color: white;
+  font-weight: bold;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.title-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-body {
+  padding: 5%;
+  background: rgb(191, 191, 193);
+  border-top: 2px solid #d0d0d0;
+}
+
+
+.xp-button {
+  background: rgb(191, 191, 193);
+  border-top: #e6e6e6 2px solid;
+  border-left: #e6e6e6 2px solid;
+  border-bottom: black 2px solid;
+  border-right: black 2px solid;
+  color: #000;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.xp-button:active {
+  border: 2px inset rgb(160, 160, 160);
+  background: rgb(160, 160, 160);
+}
+
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+@media (max-width: 600px) {
+
+  .window {
+    width: 90%;
+  }
+
+  .window-body {
+    padding: 15px;
+  }
+
+
+}
+
+.bonzi {
+  position: absolute;
+  bottom: 10%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bonzi img {
+  width: 8%;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn img {
+width: 100%;
+height: 100%;
+}
+
+.close-btn:active img {
+  filter: brightness(60%);
+}
+
