@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="desktop/assets/xplogo.png" type="image/xpicon">
+  <title>UX Nostálgico</title>
+
+  <style>
+    body {
+      background: #4395d1;
+      font-family: Tahoma, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url("desktop/assets/win7.jpg");
+       background-size: cover;
+  background-position: center;
+    }
+
+    .window {
+      width: 60%;
+      max-width: 400px;
+      border-radius: 9px;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease;
+      border: 8px solid #6db4eb;
+      box-shadow: 0px 0px 28px -1px #000000;
+      position: absolute;
+  cursor: default;
+    }
+
+    .title-bar {
+    background: #6db4eb;
+    backdrop-filter: blur(80%);
+    color: black;
+    font-weight:200;
+    font-size: 90%;
+    padding: 1%;
+    }
+
+    .window-body {
+      padding: 15px;
+      background: white;
+      text-align: center;
+      border: 1px rgb(106, 112, 119) solid;
+      p{
+        font-size: 80%;
+      }
+    }
+
+    .xp-button {
+      background: linear-gradient(to top, #cfdcf9, #f7faff);
+      border: 1px solid #474747;
+      padding: 5px 15px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .xp-button:hover {
+      background: linear-gradient(to top, #a8c4f5, #e1ecff);
+    }
+
+    
+ 
+    .checkbox-area {
+      text-align: center;
+      font-size: 90%;
+    }
+
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      
+    }
+
+    #continue-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      .window {
+        width: 95%;
+      }
+      .title-bar {
+        font-size: 13px;
+      }
+      .term-text {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+<audio id="startup-sound" src="desktop/assets/win7.m4a"></audio>
+  <div class="window fade-in">
+    <div class="title-bar" style="text-shadow: 3px 3px 10px white;">
+        Trabalho de Desenvolvimento - UX nostalgico
+    </div>
+
+    <div class="window-body">
+      <p>Este projeto foi desenvolvido para fins de estágio e tem como objetivo explorar a nostalgia na cultura pop como estratégia de UX emocional, recriando experiências. A proposta é despertar lembranças e conexões afetivas por meio de elementos visuais e interativos clássicos. </p>
+        <p>Nenhum dado pessoal será coletado ou divulgado, apenas um feedback opcional ao final da experiência, visando compreender as emoções e percepções do usuário diante da interface nostálgica. </p>
+   
+      <div class="checkbox-area">
+        <input type="checkbox" id="accept-term">
+        <label for="accept-term">Aceito participar</label>
+      </div>
+      <div class="button-group">
+        <button id="continue-btn" class="xp-button" disabled>Continuar</button>
+        <button id="exit-btn" class="xp-button">Sair</button>
+      </div>
+    </div>
+  </div>
+<p style="  position: fixed;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  color: #000000;
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  opacity: 0.7;">© 2025 — Gabriel Majeau | Estágio 2/2025</p>
+  <script>
+
+    const checkbox = document.getElementById("accept-term");
+    const continueBtn = document.getElementById("continue-btn");
+  
+
+    checkbox.addEventListener("change", () => {
+      continueBtn.disabled = !checkbox.checked;
+    });
+
+    document.getElementById("exit-btn").addEventListener("click", function() {
+  window.close();
+    });
+
+    document.getElementById("continue-btn").addEventListener("click", () => {
+      window.location.href = "desktop/index.html"; 
+    });
+
+    function makeWindowDraggable(windowEl) {
+  const header = windowEl.querySelector(".title-bar");
+  let offsetX = 0, offsetY = 0, isDragging = false;
+
+  header.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - windowEl.offsetLeft;
+    offsetY = e.clientY - windowEl.offsetTop;
+    windowEl.style.zIndex = 1000; 
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    windowEl.style.left = `${e.clientX - offsetX}px`;
+    windowEl.style.top = `${e.clientY - offsetY}px`;
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+}
+
+
+document.querySelectorAll(".window").forEach(makeWindowDraggable);
+
+  </script>
+</body>
+</html>
