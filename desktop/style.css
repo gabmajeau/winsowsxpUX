@@ -484,3 +484,25 @@ border: none;
   padding: 2%;
 }
 
+#bonziGifContainer {
+  position: fixed;
+  bottom: 15%;
+  right: 2%;
+  z-index: 999999;
+  display: none; 
+  pointer-events: none;
+  background: transparent;
+   animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+  
+}
+
+#bonziGifContainer img {
+  width: 400px;
+  background: transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
