@@ -367,7 +367,7 @@ border: none;
   box-shadow: 5px 0px 6px -2px #000000;
   position: fixed;
   align-items: center;
-  width: 356px;
+  width: 25%;
    
 }
 
@@ -506,3 +506,4 @@ border: none;
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
