@@ -52,7 +52,7 @@ const desktop = document.querySelector(".desktop");
 const videoMap = {
   "Emulador PS1": "assets/icons/videos/ps1.mp4",
   "Emulador PS2": "assets/icons/videos/ps2.mp4",
-  "Project64": "assets/icons/videos/pj64.mp4",
+  "TLOZ - Emulador 64": "assets/icons/videos/pj64.mp4",
   "Internet Explorer": "assets/icons/videos/ie.mp4",
   "MSN": "assets/icons/videos/msn.mp4",
   "Media Player": "assets/icons/videos/mediaplayer.mp4",
@@ -327,6 +327,7 @@ document.getElementById("bonzi-icon").addEventListener("click", () => {
   bonzi.className = "bonzi-window";
   document.body.appendChild(bonzi);
 });
+
 
 
 
