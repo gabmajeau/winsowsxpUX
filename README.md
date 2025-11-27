@@ -1,4 +1,4 @@
-# SITE UX - WINDOWNS XP COM INTERAÇÕES NOSTALGICAS
+# SITE UX - WINDOWS XP COM INTERAÇÕES NOSTALGICAS
 
 Este projeto recria uma experiência interativa inspirada no Windows clássico diretamente no navegador. O usuário encontra um desktop com ícones, menu Iniciar funcional, janelas arrastáveis e interações nostálgicas.
 
