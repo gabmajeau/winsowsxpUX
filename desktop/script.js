@@ -85,7 +85,7 @@ icons.forEach(icon => {
         </button>
       </div>
       <div class="window-body">
-        <video autoplay>
+        <video autoplay ${title === "Media Player" ? "controls" : ""}>
           <source src="${videoSrc}" type="video/mp4">
           Seu navegador não suporta vídeos.
         </video>
@@ -327,6 +327,7 @@ document.getElementById("bonzi-icon").addEventListener("click", () => {
   bonzi.className = "bonzi-window";
   document.body.appendChild(bonzi);
 });
+
 
 
 
