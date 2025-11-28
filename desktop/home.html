@@ -193,7 +193,7 @@ border: none;
 
 
 
-    <div class="icon">
+    <div class="icon" id="media">
     <img src="assets/icons/mediaplayer.png" alt="music">
     <h3>Media Player</h3>
   </div>
@@ -219,7 +219,7 @@ border: none;
   </div>
 
   <div class="icon">
-    <img src="assets/icons/pj64.png" alt="pj64">
+    <img src="assets/icons/zelda.ico" alt="pj64">
     <h3>TLOZ - Emulador 64</h3>
   </div>
 
@@ -276,10 +276,19 @@ border: none;
      <div class="start-right">
     <ul>
       <li  onclick="window.location.href='https://forms.gle/fyzYVPsuSbaT6QQW8'"><img src="assets/shield.png" alt=""> Feedback</li>
-      <li  onclick="window.location.href='https://gabmajeau.github.io/portifolio/'"><img src="assets/past.png" alt="">Portifolio</li>
+      <li  onclick="window.location.href='https://gabmajeau.github.io/portifolio/'"><img src="assets/star.png" alt="">Portifolio</li>
+      <li onclick="openObjetivo()" style="cursor:pointer;"><img src="assets/notas.png" alt=""> Objetivo</li>
+
+
+    
+
     </ul>
   </div>
   </div>
+
+
+
+
 
   <div class="start-menu-footer">
      <div class="shutdown-area">
@@ -294,12 +303,12 @@ border: none;
 </div>
 
 
-<!-- Janela de troca de foto -->
+
 <div id="userPicOverlay" class="userpic-overlay"></div>
 
 <div id="userPicWindow" class="userpic-window">
 
-  <!-- Barra superior estilo Windows XP -->
+
   <div class="userpic-titlebar">
     <img src="assets/xplogo.png" class="userpic-title-icon">
     <span class="userpic-title-text">Personalização</span>
@@ -344,6 +353,31 @@ border: none;
   <img src="assets/orientacoesbg.png" class="notify-icon" alt="MSN">
 
 </div>
+
+
+
+<div id="janelaObjetivo" style="display:none; position:fixed; width: 600px; max-width:90vw; z-index:99999;   border-left: 4px solid #0f65d2;
+  border-right: 4px solid #0f65d2;
+  border-bottom: 4px solid #0f65d2;  border-top-right-radius: 2%;
+  border-top-left-radius: 2%;">
+  <div id="janelaObjetivoHeader" style="  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff); color:#fff; padding:6px 8px; font-family:Tahoma, sans-serif; display:flex; align-items:center; justify-content:space-between;">
+  
+  <div style="display:flex; align-items:center; gap:6px; background: transparent;">
+    <img src="assets/notas.png" id="objetivoIcon" style="width:18px; height:18px; background: transparent;">
+    <span style="background: transparent; font-size: 90%;">Objetivo</span>
+  </div>
+
+
+  <img id="closeObjetivoBtn"
+       src="assets/x.png"
+       style="width:20px; height:20px; cursor:pointer;">
+</div>
+
+  <div style="background:#ece9d8; padding:12px; font-family:Tahoma, sans-serif; color:#000; border:2px solid #003399; border:none; max-height:60vh; overflow:auto;">
+    <p style="background: white; border: 1px solid #73869e; padding: 0.5% 0 40% 0.5%;">Esta experiência faz parte de um trabalho de estágio, onde foi desenvolvido um artigo sobre "NOSTALGIA NA CULTURA POP COMO ESTRATÉGIA DE UX CRIANDO VÍNCULOS AFETIVOS EM INTERFACES DIGITAIS", se trata da segunda parte de uma pesquisa focada na experiência do usuario utilizando este protótipo nostalgico, os dados serão coletados através dos feedbacks deixados.<br><br> Obrigado pela visita!</p>
+  </div>
+</div>
+
 
 
 
