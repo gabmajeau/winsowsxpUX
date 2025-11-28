@@ -1,204 +1,215 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UX Nostálgico</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/xplogo.png" type="image/xpicon">
-</head>
-<body>
-  
-  <div class="desktop" id="icon-explorer">
-<audio id="startup-sound" src="assets/xpin.mp3"></audio>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UX Nostálgico</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/xplogo.png" type="image/xpicon" />
+  </head>
+  <body>
+    <div class="desktop" id="icon-explorer">
+      <audio id="startup-sound" src="assets/xpin.mp3"></audio>
 
+      <div class="icon-ex" id="icon-explorer">
+        <img src="assets/icons/explorer.png" alt="net" />
+        <h3>Internet Explorer</h3>
+      </div>
 
-  <div class="icon-ex" id="icon-explorer">
-  <img src="assets/icons/explorer.png" alt="net">
-  <h3>Internet Explorer</h3>
-</div>
+      <div class="explorer-window" id="explorer-window" style="display: none">
+        <div class="explorer-titlebar">
+          <span class="explorer-title">
+            <img
+              src="assets/icons/explorer.png"
+              alt="icon"
+              style="
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+                margin-right: 5px;
+              "
+            />
+            <h3>Internet Explorer</h3>
+          </span>
+          <button class="explorer-close" id="explorer-close">
+            <img src="assets/x.png" alt="" />
+          </button>
+        </div>
 
-<div class="explorer-window" id="explorer-window" style="display:none;">
-  <div class="explorer-titlebar">
-    <span class="explorer-title">
-      <img src="assets/icons/explorer.png" alt="icon" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">
-      <h3>Internet Explorer </h3>
-    </span>
-    <button class="explorer-close" id="explorer-close"><img src="assets/x.png" alt=""></button>
-  </div>
+        <div class="explorer-body">
+          <iframe
+            src="./explorer/index.html"
+            title="Orkut Nostalgia"
+            class="explorer-frame"
+          >
+          </iframe>
+        </div>
+      </div>
 
-  <div class="explorer-body">
-    <iframe 
-      src="./explorer/index.html"
-      title="Orkut Nostalgia"
-      class="explorer-frame">
-    </iframe>
-  </div>
-</div>
+      <script>
+        const explorerWindow = document.getElementById("explorer-window");
+        const closeExplorer = document.getElementById("explorer-close");
+        const titleBar = explorerWindow.querySelector(".explorer-titlebar");
+        const iconExplorer = document.querySelector('.icon-ex img[alt="net"]');
 
-<script>
-const explorerWindow = document.getElementById('explorer-window');
-const closeExplorer = document.getElementById('explorer-close');
-const titleBar = explorerWindow.querySelector('.explorer-titlebar');
-const iconExplorer = document.querySelector('.icon-ex img[alt="net"]'); 
+        iconExplorer.addEventListener("dblclick", (e) => {
+          e.stopPropagation();
+          explorerWindow.style.display = "block";
+        });
 
-iconExplorer.addEventListener('dblclick', (e) => {
-  e.stopPropagation();
-  explorerWindow.style.display = 'block';
-});
+        closeExplorer.addEventListener("click", (e) => {
+          e.stopPropagation();
+          explorerWindow.style.display = "none";
+        });
 
+        explorerWindow.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
 
-closeExplorer.addEventListener('click', (e) => {
-  e.stopPropagation();
-  explorerWindow.style.display = 'none';
-});
+        let isDragging = false;
+        let offsetX, offsetY;
 
+        titleBar.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          isDragging = true;
+          const rect = explorerWindow.getBoundingClientRect();
+          offsetX = e.clientX - rect.left;
+          offsetY = e.clientY - rect.top;
+          titleBar.style.cursor = "grabbing";
+        });
 
-explorerWindow.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
+        document.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          explorerWindow.style.left = e.clientX - offsetX + "px";
+          explorerWindow.style.top = e.clientY - offsetY + "px";
+        });
 
-let isDragging = false;
-let offsetX, offsetY;
+        document.addEventListener("mouseup", () => {
+          isDragging = false;
+          titleBar.style.cursor = "default";
+        });
 
-titleBar.addEventListener('mousedown', (e) => {
-  e.preventDefault();
-  isDragging = true;
-  const rect = explorerWindow.getBoundingClientRect();
-  offsetX = e.clientX - rect.left;
-  offsetY = e.clientY - rect.top;
-  titleBar.style.cursor = 'grabbing';
-});
+        const shutdownBtn = document.getElementById("shutdownBtn");
 
-document.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  explorerWindow.style.left = e.clientX - offsetX + 'px';
-  explorerWindow.style.top = e.clientY - offsetY + 'px';
-});
+        const shutdownDefault = "assets/off.png";
+        const shutdownPressed = "assets/offpress.png";
 
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-  titleBar.style.cursor = 'default';
-});
+        shutdownBtn.addEventListener("mousedown", () => {
+          shutdownBtn.src = shutdownPressed;
+        });
 
-const shutdownBtn = document.getElementById("shutdownBtn");
+        shutdownBtn.addEventListener("mouseup", () => {
+          shutdownBtn.src = shutdownDefault;
+          // coloque aqui o que quiser que aconteça depois
+        });
+      </script>
 
-const shutdownDefault = "assets/off.png";
-const shutdownPressed = "assets/offpress.png";
+      <style>
+        .explorer-window {
+          position: absolute;
+          top: 20%;
+          left: 30%;
+          width: 80%;
+          height: 80%;
+          background: #ece9d8;
+          border-bottom: 4px solid #055ad1;
+          border-left: 4px solid #055ad1;
+          border-right: 4px solid #055ad1;
+          box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+          border-radius: 9px 9px 0 0;
+          z-index: 10;
+          display: none;
+        }
 
-shutdownBtn.addEventListener("mousedown", () => {
-  shutdownBtn.src = shutdownPressed;
-});
+        .explorer-titlebar {
+          background: linear-gradient(
+            to top,
+            #1b5ebd,
+            #1b5ebd,
+            #055ad1,
+            #4693ff
+          );
+          color: white;
+          font-family: Tahoma, sans-serif;
+          font-size: 14px;
+          padding: 4px 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          span {
+            background: transparent;
+          }
+          h3 {
+            background: transparent;
+            font-weight: 100;
+            font-size: 100%;
+          }
+          img {
+            background: transparent;
+            display: flex;
+          }
+        }
 
-shutdownBtn.addEventListener("mouseup", () => {
-  shutdownBtn.src = shutdownDefault;
-  // coloque aqui o que quiser que aconteça depois
-});
+        .explorer-title {
+          display: flex;
+          justify-content: space-between;
+        }
 
+        .explorer-close {
+          background: transparent;
+          border: none;
+        }
 
+        .explorer-body {
+          height: calc(100% - 35px);
+          background: white;
+        }
 
+        .explorer-frame {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
 
-</script>
+        .start-menu-footer {
+          background: linear-gradient(
+            to top,
+            #1b5ebd,
+            #1b5ebd,
+            #055ad1,
+            #4693ff
+          );
+          padding: 8px 0;
+          display: flex;
+          justify-content: right;
+          box-shadow: none;
+        }
 
+        .shutdown-area {
+          background: transparent;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-right: 4%;
+          user-select: none;
+          span {
+            font-size: 80%;
+          }
+        }
 
-<style>
+        .shutdown-area img {
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+        }
+      </style>
 
-.explorer-window {
-  position: absolute;
-  top: 20%;
-  left: 30%;
-  width: 80%;
-  height: 80%;
-  background: #ece9d8;
-  border-bottom: 4px solid #055ad1;
-  border-left: 4px solid #055ad1;
-  border-right: 4px solid #055ad1;
-  box-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-  border-radius: 9px 9px 0 0;
-  z-index: 10;
-  display: none;
-}
+      <div class="icon" id="media">
+        <img src="assets/icons/mediaplayer.png" alt="music" />
+        <h3>Media Player</h3>
+      </div>
 
-.explorer-titlebar {
-  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
-  color: white;
-  font-family: Tahoma, sans-serif;
-  font-size: 14px;
-  padding: 4px 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  span{
-    background: transparent;
-  }
-  h3{
-    background: transparent;
-    font-weight: 100;
-    font-size: 100%;
-  }
-  img{
-    background: transparent;
-    display: flex;
-  }
-}
-
-.explorer-title{
-    display: flex;
-  justify-content: space-between;
-}
-
-.explorer-close {
-background: transparent;
-border: none;
-}
-
-.explorer-body {
-  height: calc(100% - 35px);
-  background: white;
-}
-
-.explorer-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.start-menu-footer {
-  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
-  padding: 8px 0;
-   display: flex;
-  justify-content: right;
-  box-shadow: none;
-}
-
-.shutdown-area {
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: 4%;
-  user-select: none;
-  span{
-    font-size: 80%;
-  }
-}
-
-.shutdown-area img {
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-}
-
-</style>
-
-
-
-    <div class="icon" id="media">
-    <img src="assets/icons/mediaplayer.png" alt="music">
-    <h3>Media Player</h3>
-  </div>
-
-  <!--<div class="icon">
+      <!--<div class="icon">
     <img src="assets/icons/solitarie.png" alt="card">
     <h3>Paciência</h3>
   </div> 
@@ -208,180 +219,258 @@ border: none;
   //  <h3>MSN</h3>
    </div> -->
 
-  <div class="icon">
-    <img src="assets/icons/ps1.png" alt="ps1">
-    <h3>Emulador PS1</h3>
-  </div>
+      <div class="icon">
+        <img src="assets/icons/ps1.png" alt="ps1" />
+        <h3>Emulador PS1</h3>
+      </div>
 
-  <div class="icon">
-    <img src="assets/icons/ps2.png" alt="ps2">
-    <h3>Emulador PS2</h3>
-  </div>
+      <div class="icon">
+        <img src="assets/icons/ps2.png" alt="ps2" />
+        <h3>Emulador PS2</h3>
+      </div>
 
-  <div class="icon">
-    <img src="assets/icons/zelda.ico" alt="pj64">
-    <h3>TLOZ - Emulador 64</h3>
-  </div>
+      <div class="icon">
+        <img src="assets/icons/zelda.ico" alt="pj64" />
+        <h3>TLOZ - Emulador 64</h3>
+      </div>
 
-   <div class="icon">
-    <img src="assets/icons/wc3.png" alt="card">
-    <h3>Warcraft III: The Frozen...</h3>
-  </div>
+      <div class="icon">
+        <img src="assets/icons/wc3.png" alt="card" />
+        <h3>Warcraft III: The Frozen...</h3>
+      </div>
 
-   <div class="icon">
-    <img src="assets/icons/mdc.png" alt="card">
-    <h3>Midnight Club 3</h3>
-  </div>
+      <div class="icon">
+        <img src="assets/icons/mdc.png" alt="card" />
+        <h3>Midnight Club 3</h3>
+      </div>
 
- <div class="icon">
-  <img id="bonziBuddy" src="assets/icons/bb.png" alt="Bonzi Buddy">
-  <h3>Bonzi Buddy</h3>
-</div>
+      <div class="icon">
+        <img id="bonziBuddy" src="assets/icons/bb.png" alt="Bonzi Buddy" />
+        <h3>Bonzi Buddy</h3>
+      </div>
 
-
-   <div class="icon" >
-    <img src="assets/icons/cs.jfif" alt="card" style="border-radius: 15px;">
-    <h3>Counter-Strike 1.6</h3>
-  </div>
-  </div>
-
-
-<div id="bonziGifContainer">
-  <img src="assets/bonzibuddy.gif" alt="Bonzi Buddy">
-</div>
-
-
-  <div class="taskbar">
-    <button id="start-button">
-      <img id="start-img" src="assets/buttonxp2.png" alt="Iniciar">
-    </button>
-
-<div id="start-menu" class="start-menu" style="display: none;">
-  <div class="start-menu-header">
-    <img src="assets/usericons/frog.png" class="user-icon" alt="Usuário">
-    <span class="user-name">Usuário</span>
-  </div>
-
-  <div class="start-menu-body">
-    <div class="start-left">
-    <ul>
-      <li class="start-shortcut" data-app="Internet Explorer"><img src="assets/icons/explorer.png" alt=""> Internet Explorer</li>
-      <li class="start-shortcut" data-app="Media Player"><img src="assets/icons/mediaplayer.png" alt=""> Media Player</li>
-      <li class="start-shortcut" data-app="Paciência"><img src="assets/icons/solitarie.png" alt=""> Paciência</li>
-      <li class="start-shortcut" data-app="Emulador PS1"><img src="assets/icons/ps1.png" alt=""> Emulador de PS1</li>
-      <li class="start-shortcut" data-app="Emulador PS2"><img src="assets/icons/ps2.png" alt=""> Emulador de PS2</li>
-    </ul>
+      <div class="icon">
+        <img
+          src="assets/icons/cs.jfif"
+          alt="card"
+          style="border-radius: 15px"
+        />
+        <h3>Counter-Strike 1.6</h3>
+      </div>
     </div>
 
-     <div class="start-right">
-    <ul>
-      <li  onclick="window.location.href='https://forms.gle/fyzYVPsuSbaT6QQW8'"><img src="assets/shield.png" alt=""> Feedback</li>
-      <li  onclick="window.location.href='https://gabmajeau.github.io/portifolio/'"><img src="assets/star.png" alt="">Portifolio</li>
-      <li onclick="openObjetivo()" style="cursor:pointer;"><img src="assets/notas.png" alt=""> Objetivo</li>
+    <div id="bonziGifContainer">
+      <img src="assets/bonzibuddy.gif" alt="Bonzi Buddy" />
+    </div>
 
+    <div class="taskbar">
+      <button id="start-button">
+        <img id="start-img" src="assets/buttonxp2.png" alt="Iniciar" />
+      </button>
 
-    
+      <div id="start-menu" class="start-menu" style="display: none">
+        <div class="start-menu-header">
+          <img
+            src="assets/usericons/frog.png"
+            class="user-icon"
+            alt="Usuário"
+          />
+          <span class="user-name">Usuário</span>
+        </div>
 
-    </ul>
-  </div>
-  </div>
+        <div class="start-menu-body">
+          <div class="start-left">
+            <ul>
+              <li class="start-shortcut" data-app="Internet Explorer">
+                <img src="assets/icons/explorer.png" alt="" /> Internet Explorer
+              </li>
+              <li class="start-shortcut" data-app="Media Player">
+                <img src="assets/icons/mediaplayer.png" alt="" /> Media Player
+              </li>
+              <li class="start-shortcut" data-app="Paciência">
+                <img src="assets/icons/solitarie.png" alt="" /> Paciência
+              </li>
+              <li class="start-shortcut" data-app="Emulador PS1">
+                <img src="assets/icons/ps1.png" alt="" /> Emulador de PS1
+              </li>
+              <li class="start-shortcut" data-app="Emulador PS2">
+                <img src="assets/icons/ps2.png" alt="" /> Emulador de PS2
+              </li>
+            </ul>
+          </div>
 
+          <div class="start-right">
+            <ul>
+              <li
+                onclick="window.location.href='https://forms.gle/fyzYVPsuSbaT6QQW8'"
+              >
+                <img src="assets/shield.png" alt="" /> Feedback
+              </li>
+              <li
+                onclick="window.location.href='https://gabmajeau.github.io/portifolio/'"
+              >
+                <img src="assets/star.png" alt="" />Portifolio
+              </li>
+              <li onclick="openObjetivo()" style="cursor: pointer">
+                <img src="assets/notas.png" alt="" /> Objetivo
+              </li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="start-menu-footer">
+          <div class="shutdown-area">
+            <img id="logoffBtn" src="assets/logoff.png" alt="Desligar" />
+            <span style="background: transparent; color: white"
+              ><u style="background: transparent; color: white">L</u>og
+              Off</span
+            >
+          </div>
+          <div class="shutdown-area">
+            <img id="shutdownBtn" src="assets/off.png" alt="Desligar" />
+            <span style="background: transparent; color: white"
+              >T<u style="background: transparent; color: white">u</u>rn Off
+              Computer</span
+            >
+          </div>
+        </div>
+      </div>
 
+      <div id="userPicOverlay" class="userpic-overlay"></div>
 
+      <div id="userPicWindow" class="userpic-window">
+        <div class="userpic-titlebar">
+          <img src="assets/xplogo.png" class="userpic-title-icon" />
+          <span class="userpic-title-text">Personalização</span>
+          <img id="userPicClose" src="assets/x.png" class="userpic-close-btn" />
+        </div>
+        <h4 class="userpic-subtitle">
+          Escolha um ícone para alterar sua foto de usuário:
+        </h4>
+        <div
+          style="
+            background-color: white;
+            padding: 1px 3% 10% 3%;
+            margin-top: 3%;
+            border: 1px solid #8b9ea8;
+          "
+        >
+          <div class="pic-options">
+            <img class="pic-choice" src="assets/usericons/aviao.webp" />
+            <img class="pic-choice" src="assets/usericons/bike.webp" />
+            <img class="pic-choice" src="assets/usericons/dog.webp" />
+            <img class="pic-choice" src="assets/usericons/flor.webp" />
+            <img class="pic-choice" src="assets/usericons/gato.webp" />
+            <img class="pic-choice" src="assets/usericons/pato.webp" />
+          </div>
 
-  <div class="start-menu-footer">
-     <div class="shutdown-area">
-    <img id="logoffBtn" src="assets/logoff.png" alt="Desligar">
-    <span style="background: transparent; color: white;"><u style="background: transparent; color: white;">L</u>og Off</span>
-  </div>
-     <div class="shutdown-area">
-    <img id="shutdownBtn" src="assets/off.png" alt="Desligar">
-    <span style="background: transparent; color: white;">T<u style="background: transparent; color: white;">u</u>rn Off Computer</span>
-  </div>
-  </div>
-</div>
+          <div class="pic-options">
+            <img class="pic-choice" src="assets/usericons/palmeiras.webp" />
+            <img class="pic-choice" src="assets/usericons/karate.webp" />
+            <img class="pic-choice" src="assets/usericons/frog.png" />
+            <img class="pic-choice" src="assets/usericons/foguete.webp" />
+            <img class="pic-choice" src="assets/usericons/praia.webp" />
+            <img class="pic-choice" src="assets/usericons/xadrez.webp" />
+          </div>
+        </div>
+      </div>
 
+      <div class="tray">
+        <img src="assets/pc.png" alt="MSN" class="tray-icon" />
+        <span id="clock"></span>
+      </div>
+    </div>
 
+    <script src="script.js"></script>
 
-<div id="userPicOverlay" class="userpic-overlay"></div>
+    <div id="notification" class="notification">
+      <img src="assets/orientacoesbg.png" class="notify-icon" alt="MSN" />
+    </div>
 
-<div id="userPicWindow" class="userpic-window">
+    <div
+      id="janelaObjetivo"
+      style="
+        display: none;
+        position: fixed;
+        width: 600px;
+        max-width: 90vw;
+        z-index: 99999;
+        border-left: 4px solid #0f65d2;
+        border-right: 4px solid #0f65d2;
+        border-bottom: 4px solid #0f65d2;
+        border-top-right-radius: 2%;
+        border-top-left-radius: 2%;
+      "
+    >
+      <div
+        id="janelaObjetivoHeader"
+        style="
+          background: linear-gradient(
+            to top,
+            #1b5ebd,
+            #1b5ebd,
+            #055ad1,
+            #4693ff
+          );
+          color: #fff;
+          padding: 6px 8px;
+          font-family: Tahoma, sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+          "
+        >
+          <img
+            src="assets/notas.png"
+            id="objetivoIcon"
+            style="width: 18px; height: 18px; background: transparent"
+          />
+          <span style="background: transparent; font-size: 90%">Objetivo</span>
+        </div>
 
+        <img
+          id="closeObjetivoBtn"
+          src="assets/x.png"
+          style="width: 20px; height: 20px; cursor: pointer"
+        />
+      </div>
 
-  <div class="userpic-titlebar">
-    <img src="assets/xplogo.png" class="userpic-title-icon">
-    <span class="userpic-title-text">Personalização</span>
-    <img id="userPicClose" src="assets/x.png" class="userpic-close-btn">
-  </div>
-  <h4 class="userpic-subtitle">Escolha um ícone para alterar sua foto de usuário:</h4>
-<div style="background-color: white;padding: 1px 3% 10% 3%; margin-top: 3%; border: 1px solid #8b9ea8;">
-  
-
-  <div class="pic-options">
-    <img class="pic-choice" src="assets/usericons/aviao.webp">
-    <img class="pic-choice" src="assets/usericons/bike.webp">
-    <img class="pic-choice" src="assets/usericons/dog.webp">
-    <img class="pic-choice" src="assets/usericons/flor.webp">
-    <img class="pic-choice" src="assets/usericons/gato.webp">
-    <img class="pic-choice" src="assets/usericons/pato.webp">
-  </div>
-
-  <div class="pic-options">
-    <img class="pic-choice" src="assets/usericons/palmeiras.webp">
-    <img class="pic-choice" src="assets/usericons/karate.webp">
-    <img class="pic-choice" src="assets/usericons/frog.png">
-    <img class="pic-choice" src="assets/usericons/foguete.webp">
-    <img class="pic-choice" src="assets/usericons/praia.webp">
-    <img class="pic-choice" src="assets/usericons/xadrez.webp">
-  </div>
-
-</div>
-</div>
-
-    
-
-     <div class="tray">
-    <img src="assets/pc.png" alt="MSN" class="tray-icon">
-    <span id="clock"></span>
-  </div>
-  </div>
-
-  <script src="script.js"></script>
-
-  <div id="notification" class="notification">
-  <img src="assets/orientacoesbg.png" class="notify-icon" alt="MSN">
-
-</div>
-
-
-
-<div id="janelaObjetivo" style="display:none; position:fixed; width: 600px; max-width:90vw; z-index:99999;   border-left: 4px solid #0f65d2;
-  border-right: 4px solid #0f65d2;
-  border-bottom: 4px solid #0f65d2;  border-top-right-radius: 2%;
-  border-top-left-radius: 2%;">
-  <div id="janelaObjetivoHeader" style="  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff); color:#fff; padding:6px 8px; font-family:Tahoma, sans-serif; display:flex; align-items:center; justify-content:space-between;">
-  
-  <div style="display:flex; align-items:center; gap:6px; background: transparent;">
-    <img src="assets/notas.png" id="objetivoIcon" style="width:18px; height:18px; background: transparent;">
-    <span style="background: transparent; font-size: 90%;">Objetivo</span>
-  </div>
-
-
-  <img id="closeObjetivoBtn"
-       src="assets/x.png"
-       style="width:20px; height:20px; cursor:pointer;">
-</div>
-
-  <div style="background:#ece9d8; padding:12px; font-family:Tahoma, sans-serif; color:#000; border:2px solid #003399; border:none; max-height:60vh; overflow:auto;">
-    <p style="background: white; border: 1px solid #73869e; padding: 0.5% 0 40% 0.5%;">Esta experiência faz parte de um trabalho de estágio, onde foi desenvolvido um artigo sobre "NOSTALGIA NA CULTURA POP COMO ESTRATÉGIA DE UX CRIANDO VÍNCULOS AFETIVOS EM INTERFACES DIGITAIS", se trata da segunda parte de uma pesquisa focada na experiência do usuario utilizando este protótipo nostalgico, os dados serão coletados através dos feedbacks deixados.<br><br> Obrigado pela visita!</p>
-  </div>
-</div>
-
-
-
-
-
-</body>
+      <div
+        style="
+          background: #ece9d8;
+          padding: 12px;
+          font-family: Tahoma, sans-serif;
+          color: #000;
+          border: 2px solid #003399;
+          border: none;
+          max-height: 60vh;
+          overflow: auto;
+        "
+      >
+        <p
+          style="
+            background: white;
+            border: 1px solid #73869e;
+            padding: 0.5% 0 40% 0.5%;
+          "
+        >
+          Esta experiência faz parte de um trabalho de estágio, onde foi
+          desenvolvido um artigo sobre "NOSTALGIA NA CULTURA POP COMO ESTRATÉGIA
+          DE UX CRIANDO VÍNCULOS AFETIVOS EM INTERFACES DIGITAIS", se trata da
+          segunda parte de uma pesquisa focada na experiência do usuario
+          utilizando este protótipo nostalgico, os dados serão coletados através
+          dos feedbacks deixados.<br /><br />
+          Obrigado pela visita!
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
-
