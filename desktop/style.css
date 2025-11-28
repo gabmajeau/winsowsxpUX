@@ -5,7 +5,8 @@
   background-color: black;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   width: 100%;
 }
@@ -33,7 +34,8 @@ body, html {
   margin: 0 auto;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -41,20 +43,17 @@ body, html {
   font-family: Tahoma, sans-serif;
 }
 
-
-
 .taskbar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 30px;
-  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  background: linear-gradient(to top, #1b5ebd, #1b5ebd, #055ad1, #4693ff);
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  
 }
 
 .tray {
@@ -62,12 +61,12 @@ body, html {
   align-items: center;
   height: 100%;
   width: 8%;
- 
+
   border-left: 1px solid rgb(15, 54, 71);
   color: white;
   font-family: Tahoma, sans-serif;
   font-size: 13px;
-  background: linear-gradient(to top, #1290e9,#1290e9,#1290e9, #18b6f2);
+  background: linear-gradient(to top, #1290e9, #1290e9, #1290e9, #18b6f2);
 }
 
 .tray-icon {
@@ -78,11 +77,10 @@ body, html {
   margin-right: 15%;
 }
 
-#clock{
+#clock {
   font-size: 110%;
   background: transparent;
 }
-
 
 #start-button {
   border: none;
@@ -106,12 +104,10 @@ body, html {
   pointer-events: none;
   transition: opacity 0.8s ease;
   background: transparent;
-
 }
 
 .notification.show {
   opacity: 0.7;
-
 }
 
 .notify-icon {
@@ -119,7 +115,6 @@ body, html {
   height: 105%;
   background: none;
 }
-
 
 .desktop {
   position: relative;
@@ -149,16 +144,15 @@ body, html {
   width: 90%;
   height: auto;
   background: transparent;
-  
 }
 
 .icon h3 {
-background: transparent;
-font-size: 75%;
-font-weight:lighter;
-font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
-color: #ffffff;
-text-shadow: 1px 2px 2px #000000;
+  background: transparent;
+  font-size: 75%;
+  font-weight: lighter;
+  font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
+  color: #ffffff;
+  text-shadow: 1px 2px 2px #000000;
 }
 
 .icon-ex {
@@ -175,16 +169,15 @@ text-shadow: 1px 2px 2px #000000;
   width: 90%;
   height: auto;
   background: transparent;
-  
 }
 
 .icon-ex h3 {
-background: transparent;
-font-size: 75%;
-font-weight:lighter;
-font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
-color: #ffffff;
-text-shadow: 1px 2px 2px #000000;
+  background: transparent;
+  font-size: 75%;
+  font-weight: lighter;
+  font-family: "Microsoft Sans Serif", "Segoe UI", Tahoma, sans-serif;
+  color: #ffffff;
+  text-shadow: 1px 2px 2px #000000;
 }
 
 .window {
@@ -196,16 +189,16 @@ text-shadow: 1px 2px 2px #000000;
   border-bottom: 4px solid #055ad1;
   border-left: 4px solid #055ad1;
   border-right: 4px solid #055ad1;
-  box-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   border-radius: 9px 9px 0 0;
   z-index: 999;
-  span{
+  span {
     background: transparent;
   }
 }
 
 .window-header {
-  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  background: linear-gradient(to top, #1b5ebd, #1b5ebd, #055ad1, #4693ff);
   color: white;
   font-family: Tahoma, sans-serif;
   font-size: 14px;
@@ -213,19 +206,16 @@ text-shadow: 1px 2px 2px #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
-
 .window-header .close-btn {
-background: transparent;
-border: none;
+  background: transparent;
+  border: none;
 }
 
 .window-body {
   padding: 0;
   background: #000;
-  
 }
 
 .window video {
@@ -247,7 +237,6 @@ border: none;
   background: transparent;
 }
 
-
 .icon.selected {
   background-color: rgba(51, 153, 255, 0.4);
   border: 1px solid #0066cc;
@@ -265,12 +254,12 @@ border: none;
 .start-menu {
   position: fixed;
   bottom: 30px;
-  width: 25%;
+  width: 356px;
   height: 550px;
   background: linear-gradient(to bottom, #f0f0f0, #d4d0c8);
   border-top: 2px solid #a6c0e7;
   border-right: 4px solid #1b5ebd;
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   border-radius: 0 10px 0 0;
   z-index: -1000;
   animation: fadeIn 0.2s ease-in-out;
@@ -283,10 +272,10 @@ border: none;
   align-items: center;
   padding: 2%;
   gap: 5%;
-  span{
-  background: transparent;
-  font-weight: bold;
-}
+  span {
+    background: transparent;
+    font-weight: bold;
+  }
 }
 
 .user-icon {
@@ -295,7 +284,6 @@ border: none;
   border-radius: 4px;
   border: 1px white solid;
   cursor: pointer;
-  
 }
 
 .start-menu-body {
@@ -303,7 +291,6 @@ border: none;
   background: #e3e3e3;
   height: 425px;
   border-top: 1px solid #808080;
-  
 }
 
 .start-left {
@@ -318,7 +305,6 @@ border: none;
   flex: 1;
   background: #d3e5fd;
   width: 100%;
-  
 }
 
 .start-left ul,
@@ -329,12 +315,10 @@ border: none;
   font-size: 80%;
   color: #051422;
   background: white;
-  img{
+  img {
     width: 20%;
   }
 }
-
-
 
 .start-left li,
 .start-right li {
@@ -345,19 +329,19 @@ border: none;
   cursor: pointer;
   border-radius: 2px;
   background: white;
-  img{
-     background: transparent;
+  img {
+    background: transparent;
   }
 }
-.start-right li { background: #d3e5fd;}
-
+.start-right li {
+  background: #d3e5fd;
+}
 
 .start-left li:hover,
 .start-right li:hover {
   background: #316ac5;
   color: white;
 }
-
 
 .start-menu-footer {
   background: linear-gradient(to top, #0f65d2, #0f65d2, #4693ff);
@@ -367,25 +351,24 @@ border: none;
   box-shadow: 5px 0px 6px -2px #000000;
   position: fixed;
   align-items: center;
-  width: 25%;
-   
+  width: 356px;
 }
-
-
 
 .userpic-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
   display: none;
-  z-index: 999; 
-  
+  z-index: 999;
 }
 
 .userpic-window {
   position: fixed;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: #ececec;
   padding: 20px;
@@ -399,14 +382,13 @@ border: none;
   border-left: 4px solid #0f65d2;
   border-right: 4px solid #0f65d2;
   border-bottom: 4px solid #0f65d2;
-  h3{
+  h3 {
     background: linear-gradient(to top, #0f65d2, #0f65d2, #4693ff);
     font-size: 90%;
-    font-weight:100;
+    font-weight: 100;
     color: white;
     padding: 2% 1% 2% 1%;
     text-align: left;
-    
   }
 }
 
@@ -432,7 +414,6 @@ border: none;
   border-color: black;
 }
 
-
 .userpic-titlebar {
   height: 38px;
   width: 695px;
@@ -441,18 +422,16 @@ border: none;
   margin-left: -20px;
   margin-top: -20px;
   border-radius: 8px 10px 0 0;
-  background: linear-gradient(to top, #1b5ebd,#1b5ebd,#055ad1, #4693ff);
+  background: linear-gradient(to top, #1b5ebd, #1b5ebd, #055ad1, #4693ff);
   padding: 10px;
   box-sizing: border-box;
   border-bottom: 2px solid #0d4fa3;
 }
 
-
 .userpic-title-icon {
   width: 20px;
   margin-right: 8px;
   background: transparent;
-
 }
 
 /* Título */
@@ -460,11 +439,10 @@ border: none;
   color: white;
   font-weight: 300;
   font-size: 14px;
-  flex: 1; 
+  flex: 1;
   background: transparent;
   text-align: left;
 }
-
 
 .userpic-close-btn {
   width: 22px;
@@ -472,7 +450,6 @@ border: none;
   cursor: pointer;
   user-select: none;
 }
-
 
 .userpic-subtitle {
   color: black;
@@ -489,12 +466,11 @@ border: none;
   bottom: 15%;
   right: 2%;
   z-index: 999999;
-  display: none; 
+  display: none;
   pointer-events: none;
   background: transparent;
-   animation: fadeIn 0.6s ease forwards;
+  animation: fadeIn 0.6s ease forwards;
   opacity: 0;
-  
 }
 
 #bonziGifContainer img {
@@ -503,8 +479,10 @@ border: none;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-
