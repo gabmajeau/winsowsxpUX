@@ -180,20 +180,20 @@ document.querySelectorAll(".start-shortcut").forEach((shortcut) => {
     const app = shortcut.getAttribute("data-app");
     startMenu.style.display = "none";
 
-    // 1) Explorer abre sua janela especial
+
     if (app === "Internet Explorer") {
       document.getElementById("explorer-window").style.display = "block";
       return;
     }
 
-    // 2) Os outros apps usam o mesmo sistema do desktop
+
     const videoSrc = videoMap[app];
     if (!videoSrc) return;
 
-    // Ícone da esquerda no menu iniciar
+
     const iconImg = shortcut.querySelector("img").src;
 
-    // Criar janela igual à do desktop
+
     const windowDiv = document.createElement("div");
     windowDiv.classList.add("window");
 
@@ -222,10 +222,10 @@ document.querySelectorAll(".start-shortcut").forEach((shortcut) => {
     const closeBtn = windowDiv.querySelector(".close-btn");
     const closeIcon = closeBtn.querySelector(".close-icon");
 
-    // Fechar quando o vídeo terminar
+
     video.addEventListener("ended", () => windowDiv.remove());
 
-    // Animação do botão fechar
+
     closeBtn.addEventListener(
       "mousedown",
       () => (closeIcon.src = "assets/xclick.png")
@@ -239,7 +239,7 @@ document.querySelectorAll(".start-shortcut").forEach((shortcut) => {
       () => (closeIcon.src = "assets/x.png")
     );
 
-    // Fechar
+
     closeBtn.addEventListener("click", () => windowDiv.remove());
   });
 });
@@ -378,3 +378,4 @@ function initObjetivo() {
     });
   })();
 }
+
