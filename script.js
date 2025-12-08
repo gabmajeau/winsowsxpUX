@@ -16,7 +16,7 @@ document.querySelector(".close-btn").addEventListener("click", () => {
     isDragging = true;
     offsetX = e.clientX - windowEl.offsetLeft;
     offsetY = e.clientY - windowEl.offsetTop;
-    windowEl.style.zIndex = 1000; // traz pra frente
+    windowEl.style.zIndex = 1000;
   });
 
   document.addEventListener("mousemove", (e) => {
@@ -51,13 +51,13 @@ bonzi.addEventListener("click", () => {
   sound.volume = 0.5;
   sound.play();
 
-  // Guarda o tamanho atual antes de trocar
+
   const width = bonzi.offsetWidth;
   const height = bonzi.offsetHeight;
 
   bonzi.src = "desktop/assets/bonzybuddy2.gif";
 
-  // Aplica o mesmo tamanho da imagem anterior
+
     bonzi.style.height = height + "px";
 
   setTimeout(() => {
@@ -91,3 +91,4 @@ function makeWindowDraggable(windowEl) {
 
 
 document.querySelectorAll(".window").forEach(makeWindowDraggable);
+
